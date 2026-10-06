@@ -307,7 +307,7 @@ section[data-testid="stSidebar"] {
 
 
 # ---------- Load saved model, scaler, and expected columns ----------
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).parent
 
 
 @st.cache_resource
