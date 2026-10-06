@@ -308,6 +308,16 @@ section[data-testid="stSidebar"] {
 
 # ---------- Load saved model, scaler, and expected columns ----------
 BASE_DIR = Path(__file__).parent
+if not (BASE_DIR / "LR_heart.pkl").exists():
+    for _p in BASE_DIR.rglob("LR_heart.pkl"):
+        BASE_DIR = _p.parent
+        break
+
+if not (BASE_DIR / "LR_heart.pkl").exists():
+    _root = Path(__file__).parent
+    _files = sorted(str(p.relative_to(_root)) for p in _root.rglob("*") if ".git" not in p.parts)
+    st.error("LR_heart.pkl nahi mili. Repo mein yeh files hain: " + ", ".join(_files[:40]))
+    st.stop()
 
 
 @st.cache_resource
